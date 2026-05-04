@@ -1,865 +1,1210 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maroua Azoud — AI & Graphic Designer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Tenor+Sans&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --crimson: #6B0F22;
-    --crimson-deep: #4A0818;
-    --crimson-light: #8B1A2F;
-    --gold: #C9B882;
-    --gold-light: #DDD0A8;
-    --cream: #F5F0E8;
-    --off-white: #FAF8F4;
-    --dark: #1A0A0E;
-    --text-body: #3D2020;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maroua Azoud | AI &amp; Graphic Designer</title>
+  <meta name="description" content="Portfolio of Maroua Azoud, AI visual artist and creative designer based in Doha, Qatar." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Tenor+Sans&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --crimson: #6B0F22;
+      --crimson-deep: #4A0818;
+      --gold: #C9B882;
+      --gold-soft: #DDD0A8;
+      --cream: #F5F0E8;
+      --off-white: #FAF8F4;
+      --text-body: #3D2020;
+      --shadow-soft: 0 22px 60px rgba(0, 0, 0, 0.3);
 
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+      --radius-sm: 10px;
+      --radius-md: 18px;
+      --radius-lg: 26px;
 
-  html { scroll-behavior: smooth; }
+      --container: 1120px;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-20: 5rem;
 
-  body {
-    font-family: 'Tenor Sans', serif;
-    background: var(--off-white);
-    color: var(--text-body);
-    overflow-x: hidden;
-  }
-
-  /* ─── NOISE TEXTURE OVERLAY ─── */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 999;
-    opacity: 0.4;
-  }
-
-  /* ─── NAV ─── */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem 4rem;
-    mix-blend-mode: normal;
-    transition: background 0.4s, backdrop-filter 0.4s;
-  }
-  nav.scrolled {
-    background: rgba(106, 15, 34, 0.96);
-    backdrop-filter: blur(12px);
-  }
-  .nav-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 1.5rem;
-    color: var(--gold);
-    letter-spacing: 0.04em;
-    text-decoration: none;
-  }
-  .nav-links {
-    display: flex;
-    gap: 2.5rem;
-    list-style: none;
-  }
-  .nav-links a {
-    font-family: 'Tenor Sans', sans-serif;
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold-light);
-    text-decoration: none;
-    transition: color 0.3s;
-  }
-  .nav-links a:hover { color: #fff; }
-
-  /* ─── HERO ─── */
-  .hero {
-    min-height: 100vh;
-    background: var(--crimson-deep);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    overflow: hidden;
-    position: relative;
-  }
-  .hero::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 200px;
-    background: linear-gradient(to top, var(--off-white), transparent);
-  }
-  .hero-left {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 8rem 5rem 6rem 6rem;
-    position: relative;
-    z-index: 2;
-  }
-  .hero-eyebrow {
-    font-size: 0.65rem;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 2rem;
-    animation: fadeUp 1s ease both;
-  }
-  .hero-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(3.5rem, 6vw, 6rem);
-    font-weight: 300;
-    line-height: 1.05;
-    color: var(--cream);
-    margin-bottom: 0.2rem;
-    animation: fadeUp 1s 0.15s ease both;
-  }
-  .hero-title em {
-    font-style: italic;
-    color: var(--gold);
-  }
-  .hero-subtitle {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1rem, 1.8vw, 1.4rem);
-    font-weight: 300;
-    font-style: italic;
-    color: var(--gold-light);
-    margin-top: 1.5rem;
-    margin-bottom: 3rem;
-    letter-spacing: 0.04em;
-    animation: fadeUp 1s 0.3s ease both;
-    max-width: 420px;
-  }
-  .hero-tagline {
-    display: flex;
-    gap: 1.5rem;
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold);
-    opacity: 0.7;
-    animation: fadeUp 1s 0.45s ease both;
-  }
-  .hero-tagline span::before { content: '— '; }
-
-  .hero-cta {
-    display: inline-block;
-    margin-top: 3rem;
-    padding: 1rem 2.5rem;
-    border: 1px solid var(--gold);
-    color: var(--gold);
-    font-size: 0.65rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: all 0.4s;
-    animation: fadeUp 1s 0.6s ease both;
-    width: fit-content;
-  }
-  .hero-cta:hover {
-    background: var(--gold);
-    color: var(--crimson-deep);
-  }
-
-  .hero-right {
-    position: relative;
-    overflow: hidden;
-  }
-  .hero-right img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    filter: sepia(0.15) contrast(1.05);
-    animation: scaleIn 1.5s ease both;
-  }
-  .hero-right::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to right, var(--crimson-deep) 0%, transparent 30%),
-                linear-gradient(to top, var(--crimson-deep) 0%, transparent 25%);
-    z-index: 1;
-  }
-
-  /* ─── SECTION COMMONS ─── */
-  section { position: relative; }
-  .section-label {
-    font-size: 0.6rem;
-    letter-spacing: 0.4em;
-    text-transform: uppercase;
-    color: var(--crimson);
-    margin-bottom: 1rem;
-  }
-  .section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    font-weight: 300;
-    line-height: 1.1;
-    color: var(--crimson-deep);
-  }
-  .section-title em { font-style: italic; color: var(--crimson-light); }
-  .divider {
-    width: 60px;
-    height: 1px;
-    background: var(--gold);
-    margin: 1.5rem 0 2rem;
-  }
-
-  /* ─── ABOUT ─── */
-  .about {
-    padding: 7rem 6rem;
-    background: var(--off-white);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6rem;
-    align-items: center;
-  }
-  .about-image {
-    position: relative;
-  }
-  .about-image img {
-    width: 100%;
-    aspect-ratio: 3/4;
-    object-fit: cover;
-    object-position: top;
-    display: block;
-  }
-  .about-image::before {
-    content: '';
-    position: absolute;
-    top: -20px; left: -20px;
-    right: 20px; bottom: 20px;
-    border: 1px solid var(--gold);
-    z-index: 0;
-  }
-  .about-image img { position: relative; z-index: 1; }
-  .about-text p {
-    font-size: 1rem;
-    line-height: 1.9;
-    color: var(--text-body);
-    margin-bottom: 1.2rem;
-  }
-  .about-quote {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 1.4rem;
-    color: var(--crimson);
-    border-left: 2px solid var(--gold);
-    padding-left: 1.5rem;
-    margin: 2rem 0;
-    line-height: 1.6;
-  }
-  .services-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.5rem 2rem;
-    margin-top: 2rem;
-  }
-  .service-item {
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--crimson);
-    padding: 0.5rem 0;
-    border-bottom: 1px solid rgba(107, 15, 34, 0.12);
-  }
-
-  /* ─── PROJECTS ─── */
-  .projects {
-    background: var(--crimson-deep);
-    padding: 7rem 0;
-  }
-  .projects-header {
-    padding: 0 6rem 4rem;
-  }
-  .projects-header .section-label { color: var(--gold); opacity: 0.7; }
-  .projects-header .section-title { color: var(--cream); }
-  .projects-header .section-title em { color: var(--gold); }
-  .projects-header .divider { background: var(--gold); opacity: 0.5; }
-
-  /* Project 1 — ASSAF — Full bleed */
-  .project-featured {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    min-height: 80vh;
-    margin-bottom: 2px;
-  }
-  .project-featured-img {
-    position: relative;
-    overflow: hidden;
-  }
-  .project-featured-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.8s ease;
-  }
-  .project-featured:hover .project-featured-img img { transform: scale(1.04); }
-  .project-featured-content {
-    padding: 5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background: rgba(255,255,255,0.04);
-    border-left: 1px solid rgba(201, 184, 130, 0.15);
-  }
-  .project-client {
-    font-size: 0.6rem;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    color: var(--gold);
-    opacity: 0.8;
-    margin-bottom: 0.8rem;
-  }
-  .project-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2rem, 3.5vw, 3rem);
-    font-weight: 300;
-    color: var(--cream);
-    margin-bottom: 0.5rem;
-    line-height: 1.1;
-  }
-  .project-name em { font-style: italic; color: var(--gold); }
-  .project-type {
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold);
-    opacity: 0.6;
-    margin-bottom: 2rem;
-  }
-  .project-desc {
-    font-size: 0.95rem;
-    line-height: 1.9;
-    color: rgba(245, 240, 232, 0.75);
-    margin-bottom: 2rem;
-    max-width: 440px;
-  }
-  .project-treatments {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-    margin-top: 1rem;
-  }
-  .treatment {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    font-size: 0.85rem;
-    color: rgba(245, 240, 232, 0.65);
-    line-height: 1.5;
-  }
-  .treatment::before {
-    content: '';
-    width: 20px;
-    height: 1px;
-    background: var(--gold);
-    opacity: 0.6;
-    margin-top: 0.65em;
-    flex-shrink: 0;
-  }
-  .treatment strong {
-    color: var(--gold-light);
-    font-weight: normal;
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 1rem;
-  }
-
-  /* Project grid */
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-    padding: 2px 0;
-  }
-  .project-card {
-    position: relative;
-    overflow: hidden;
-    aspect-ratio: 3/4;
-    cursor: pointer;
-  }
-  .project-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.7s ease;
-  }
-  .project-card:hover img { transform: scale(1.06); }
-  .project-card-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(74,8,24,0.92) 0%, transparent 60%);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 2rem;
-    opacity: 0;
-    transition: opacity 0.4s;
-  }
-  .project-card:hover .project-card-overlay { opacity: 1; }
-  .project-card-label {
-    font-size: 0.6rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 0.4rem;
-  }
-  .project-card-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.4rem;
-    font-weight: 300;
-    color: var(--cream);
-    font-style: italic;
-  }
-  .project-card-desc {
-    font-size: 0.8rem;
-    color: rgba(245,240,232,0.7);
-    line-height: 1.6;
-    margin-top: 0.5rem;
-  }
-  .project-always-visible {
-    position: absolute;
-    bottom: 1.5rem;
-    left: 2rem;
-  }
-  .project-always-visible .project-card-label { opacity: 0.7; }
-  .project-always-visible .project-card-title { font-size: 1.1rem; }
-
-  /* OneHardset — wide card */
-  .project-wide {
-    grid-column: span 2;
-    aspect-ratio: 16/7;
-  }
-
-  /* ─── EDITORIAL STRIP ─── */
-  .editorial-strip {
-    padding: 7rem 6rem;
-    background: var(--cream);
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 6rem;
-    align-items: center;
-  }
-  .editorial-copy .section-title { font-size: clamp(1.8rem, 3vw, 2.8rem); }
-  .editorial-quote {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.1rem, 2vw, 1.5rem);
-    font-style: italic;
-    color: var(--crimson);
-    line-height: 1.7;
-    margin-top: 1.5rem;
-  }
-  .editorial-images {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.5rem;
-  }
-  .editorial-images img {
-    width: 100%;
-    aspect-ratio: 3/4;
-    object-fit: cover;
-    object-position: top;
-    display: block;
-  }
-  .editorial-images img:nth-child(2) { margin-top: 2rem; }
-
-  /* ─── CONTACT ─── */
-  .contact {
-    background: var(--crimson-deep);
-    padding: 8rem 6rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6rem;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .contact::before {
-    content: 'BYMAR';
-    position: absolute;
-    right: -2rem;
-    bottom: -3rem;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 14rem;
-    font-weight: 600;
-    color: rgba(201, 184, 130, 0.04);
-    pointer-events: none;
-    letter-spacing: -0.05em;
-  }
-  .contact .section-label { color: var(--gold); opacity: 0.7; }
-  .contact .section-title { color: var(--cream); }
-  .contact .section-title em { color: var(--gold); }
-  .contact .divider { background: var(--gold); opacity: 0.4; }
-  .contact-desc {
-    font-size: 1rem;
-    line-height: 1.9;
-    color: rgba(245, 240, 232, 0.65);
-    max-width: 400px;
-  }
-  .contact-details {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-  .contact-item {
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-  }
-  .contact-item-label {
-    font-size: 0.6rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--gold);
-    opacity: 0.6;
-  }
-  .contact-item-value {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem;
-    font-style: italic;
-    color: var(--cream);
-    text-decoration: none;
-    transition: color 0.3s;
-  }
-  .contact-item-value:hover { color: var(--gold); }
-  .contact-social {
-    display: flex;
-    gap: 2rem;
-    margin-top: 1rem;
-  }
-  .contact-social a {
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold);
-    text-decoration: none;
-    border-bottom: 1px solid rgba(201,184,130,0.4);
-    padding-bottom: 0.2rem;
-    transition: all 0.3s;
-  }
-  .contact-social a:hover {
-    border-bottom-color: var(--gold);
-    opacity: 1;
-  }
-
-  /* ─── FOOTER ─── */
-  footer {
-    background: var(--dark);
-    padding: 2rem 6rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid rgba(201, 184, 130, 0.1);
-  }
-  footer .logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    color: var(--gold);
-    font-size: 1.2rem;
-  }
-  footer p {
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    color: rgba(201, 184, 130, 0.4);
-    text-transform: uppercase;
-  }
-
-  /* ─── ANIMATIONS ─── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes scaleIn {
-    from { transform: scale(1.08); opacity: 0; }
-    to   { transform: scale(1); opacity: 1; }
-  }
-
-  .reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.9s ease, transform 0.9s ease;
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ─── RESPONSIVE ─── */
-  @media (max-width: 1024px) {
-    nav { padding: 1.5rem 2.5rem; }
-    .hero { grid-template-columns: 1fr; }
-    .hero-right {
-      display: none;
+      --font-display: "Cormorant Garamond", serif;
+      --font-body: "Tenor Sans", sans-serif;
     }
-    .hero-left { padding: 8rem 3rem 6rem; }
-    .about { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 3rem; }
-    .about-image { display: none; }
-    .project-featured { grid-template-columns: 1fr; }
-    .project-featured-img { aspect-ratio: 16/9; }
-    .projects-header { padding: 0 3rem 3rem; }
-    .projects-grid { grid-template-columns: 1fr 1fr; }
-    .project-wide { grid-column: span 2; }
-    .editorial-strip { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 3rem; }
-    .contact { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 3rem; }
-    footer { padding: 2rem 3rem; }
-    .project-featured-content { padding: 3rem; }
-  }
 
-  @media (max-width: 640px) {
-    nav { padding: 1.2rem 1.5rem; }
-    .nav-links { display: none; }
-    .hero-left { padding: 7rem 1.5rem 4rem; }
-    .about { padding: 4rem 1.5rem; }
-    .projects-header { padding: 0 1.5rem 2.5rem; }
-    .projects-grid { grid-template-columns: 1fr; }
-    .project-wide { grid-column: span 1; aspect-ratio: 4/3; }
-    .project-card-overlay { opacity: 1; }
-    .editorial-strip { padding: 4rem 1.5rem; }
-    .editorial-images { grid-template-columns: 1fr; }
-    .editorial-images img:nth-child(2) { margin-top: 0; }
-    .contact { padding: 4rem 1.5rem; }
-    footer { padding: 1.5rem; flex-direction: column; gap: 1rem; text-align: center; }
-    .services-grid { grid-template-columns: 1fr; }
-    .hero-tagline { flex-direction: column; gap: 0.5rem; }
-    .project-featured-content { padding: 2rem 1.5rem; }
-  }
-</style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--off-white);
+      color: var(--text-body);
+      line-height: 1.7;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.4;
+      z-index: -1;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    }
+
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; border: none; background: none; cursor: pointer; }
+
+    .container {
+      width: min(100% - 3rem, var(--container));
+      margin: 0 auto;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: 1rem;
+      background: var(--crimson-deep);
+      color: #fff;
+      padding: 0.75rem 1.1rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      z-index: 999;
+    }
+    .skip-link:focus { left: 1rem; }
+
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      background: transparent;
+      padding: 1.5rem 3.5rem;
+      transition: background 0.4s ease, backdrop-filter 0.4s ease;
+    }
+    .site-header.scrolled {
+      background: rgba(75, 8, 24, 0.96);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-inner {
+      width: min(100%, var(--container));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.45rem;
+      color: var(--gold);
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      text-transform: lowercase;
+      white-space: nowrap;
+    }
+    .brand span {
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.28em;
+      margin-left: 0.6rem;
+      color: var(--gold-soft);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.4rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      transition: color 0.3s ease;
+    }
+    .nav-links a:hover, .nav-links a:focus-visible { color: #fff; }
+
+    .nav-cta {
+      border: 1px solid rgba(201, 184, 130, 0.6);
+      padding: 0.7rem 1.8rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+    }
+
+    .lang-toggle {
+      min-width: 60px;
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(201, 184, 130, 0.6);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      background: rgba(74, 8, 24, 0.8);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+    .lang-toggle[data-lang="ar"] {
+      background: var(--gold);
+      color: var(--crimson-deep);
+      border-color: var(--gold);
+    }
+
+    .nav-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid rgba(201, 184, 130, 0.6);
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      background: rgba(74, 8, 24, 0.85);
+    }
+    .nav-toggle span,
+    .nav-toggle span::before,
+    .nav-toggle span::after {
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: currentColor;
+      border-radius: 2px;
+      position: relative;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      content: "";
+    }
+    .nav-toggle span::before { position: absolute; top: -6px; left: 0; }
+    .nav-toggle span::after  { position: absolute; top: 6px; left: 0; }
+    .nav-open .nav-toggle span { transform: rotate(45deg); }
+    .nav-open .nav-toggle span::before { transform: rotate(-90deg) translateX(-6px); }
+    .nav-open .nav-toggle span::after  { opacity: 0; }
+
+    main { margin-top: 88px; }
+    section { position: relative; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: var(--crimson-deep);
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      overflow: hidden;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 200px;
+      background: linear-gradient(to top, var(--off-white), transparent);
+      pointer-events: none;
+    }
+    .hero-inner { display: contents; }
+
+    .hero-left {
+      padding: 7rem 3.5rem 5rem 4.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.7rem;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 6vw, 6rem);
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--cream);
+      margin-bottom: 0.25rem;
+    }
+    .hero-title em { font-style: italic; color: var(--gold); }
+
+    .hero-subtitle {
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 1.8vw, 1.4rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--gold-soft);
+      margin-top: 1.25rem;
+      margin-bottom: 2.5rem;
+      letter-spacing: 0.06em;
+      max-width: 420px;
+    }
+
+    .hero-tagline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      opacity: 0.8;
+    }
+    .hero-tagline span::before { content: "— "; }
+
+    .hero-cta {
+      display: inline-block;
+      margin-top: 3rem;
+      padding: 1rem 2.8rem;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 999px;
+      transition: all 0.4s ease;
+    }
+    .hero-cta:hover, .hero-cta:focus-visible {
+      background: var(--gold);
+      color: var(--crimson-deep);
+    }
+
+    .hero-right { position: relative; overflow: hidden; }
+    .hero-right::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to right, var(--crimson-deep) 0%, transparent 32%),
+        linear-gradient(to top, var(--crimson-deep) 0%, transparent 26%);
+      z-index: 1;
+    }
+    .hero-image-wrapper { position: relative; height: 100%; }
+    .hero-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      filter: sepia(0.12) contrast(1.05);
+      transform: scale(1.03);
+    }
+
+    .hero-caption {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 3rem;
+      z-index: 2;
+      color: var(--cream);
+      font-size: 0.75rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+    .hero-caption span { opacity: 0.9; }
+    .hero-caption::before {
+      content: "";
+      width: 40px; height: 1px;
+      background: var(--gold);
+      opacity: 0.7;
+    }
+
+    /* ── SECTIONS ── */
+    .section { padding: var(--space-16) 0; }
+    .section-light { background: var(--off-white); }
+    .section-cream { background: var(--cream); }
+
+    .section-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--crimson);
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--crimson-deep);
+    }
+    .section-title em { font-style: italic; color: var(--crimson); }
+
+    .divider {
+      width: 60px; height: 1px;
+      background: var(--gold);
+      margin: 1.5rem 0 2rem;
+    }
+    .section-lead { max-width: 620px; color: var(--text-body); font-size: 1rem; }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 4rem;
+      align-items: center;
+      margin-top: 3rem;
+    }
+    .about-image { position: relative; }
+    .about-image img {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      object-position: top;
+     
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+    }
+    .about-image::before {
+      content: "";
+      position: absolute;
+      top: -20px; left: -20px;
+      right: 20px; bottom: 20px;
+      border: 1px solid var(--gold);
+      z-index: -1;
+    }
+    .about-text p { margin-bottom: 1.1rem; }
+    .about-quote {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.4rem;
+      color: var(--crimson);
+      border-left: 2px solid var(--gold);
+      padding-left: 1.5rem;
+      margin: 2rem 0;
+      line-height: 1.6;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem 2.5rem;
+      margin-top: 2rem;
+    }
+    .service-item {
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--crimson);
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(107, 15, 34, 0.12);
+    }
+
+    .stats-banner {
+      margin-top: 2.2rem;
+      padding: 1.1rem 1.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(201, 184, 130, 0.6);
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 1.3rem;
+      align-items: center;
+      background: rgba(201, 184, 130, 0.06);
+      font-size: 0.72rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+    }
+    .stats-banner span::before { content: "• "; margin-right: 0.25rem; }
+
+    /* ── PROJECTS ── */
+    .projects {
+      background: var(--crimson-deep);
+      padding: var(--space-16) 0;
+      color: var(--cream);
+    }
+    .projects-header { padding: 0 3.5rem 3.5rem; }
+    .projects-header .section-label { color: var(--gold); opacity: 0.75; }
+    .projects-header .section-title { color: var(--cream); }
+    .projects-header .section-title em { color: var(--gold); }
+    .projects-header .divider { background: var(--gold); opacity: 0.55; }
+
+    .project-featured {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 70vh;
+      margin-bottom: 2px;
+    }
+    .project-featured-img { position: relative; overflow: hidden; }
+    .project-featured-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+    }
+    .project-featured:hover .project-featured-img img { transform: scale(1.04); }
+
+    .project-featured-content {
+      padding: 4.5rem 3.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.04);
+      border-left: 1px solid rgba(201, 184, 130, 0.18);
+    }
+
+    .project-client {
+      font-size: 0.6rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.85;
+      margin-bottom: 0.75rem;
+    }
+    .project-name {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.4vw, 3rem);
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+      line-height: 1.1;
+    }
+    .project-name em { font-style: italic; color: var(--gold); }
+
+    .project-type {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.65;
+      margin-bottom: 1.8rem;
+    }
+    .project-desc {
+      font-size: 0.95rem;
+      line-height: 1.9;
+      color: rgba(245, 240, 232, 0.78);
+      max-width: 460px;
+    }
+
+    .project-treatments {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-top: 1.4rem;
+    }
+    .treatment {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      font-size: 0.85rem;
+      color: rgba(245, 240, 232, 0.7);
+      line-height: 1.5;
+    }
+    .treatment::before {
+      content: "";
+      width: 20px; height: 1px;
+      background: var(--gold);
+      opacity: 0.7;
+      margin-top: 0.7em;
+      flex-shrink: 0;
+    }
+    .treatment strong {
+      color: var(--gold-soft);
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1rem;
+      font-weight: 400;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      padding: 2px 0 0;
+    }
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 3 / 4;
+      cursor: pointer;
+    }
+    .project-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+    .project-card:hover img { transform: scale(1.06); }
+
+    .project-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(74, 8, 24, 0.95) 0%, transparent 60%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 2rem;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .project-card:hover .project-card-overlay { opacity: 1; }
+
+    .project-card-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .project-card-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: var(--cream);
+      font-style: italic;
+    }
+    .project-card-desc {
+      font-size: 0.8rem;
+      color: rgba(245, 240, 232, 0.75);
+      line-height: 1.6;
+      margin-top: 0.6rem;
+      max-width: 24ch;
+    }
+
+    .project-always-visible {
+      position: absolute;
+      left: 2rem;
+      bottom: 1.6rem;
+    }
+    .project-always-visible .project-card-title { font-size: 1.1rem; }
+
+    .project-wide {
+      grid-column: span 2;
+      aspect-ratio: 16 / 7;
+    }
+
+    /* ── EDITORIAL ── */
+    .editorial-strip {
+      padding: var(--space-16) 0;
+      background: var(--cream);
+      display: grid;
+      grid-template-columns: 1.1fr 1.4fr;
+      gap: 4.5rem;
+      align-items: center;
+    }
+    .editorial-copy .section-title { font-size: clamp(1.8rem, 3vw, 2.8rem); }
+    .editorial-quote {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 2vw, 1.6rem);
+      font-style: italic;
+      color: var(--crimson);
+      line-height: 1.7;
+      margin-top: 1.5rem;
+      max-width: 32ch;
+    }
+    .editorial-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+    .editorial-images img {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      object-position: top;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-soft);
+    }
+    .editorial-images img:nth-child(2) { margin-top: 2rem; }
+
+    /* ── CONTACT ── */
+    .contact-section {
+      background: var(--crimson-deep);
+      padding: var(--space-16) 0;
+      color: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-section::before {
+      content: "BYMAR";
+      position: absolute;
+      right: -2rem; bottom: -3rem;
+      font-family: var(--font-display);
+      font-size: 14rem;
+      font-weight: 600;
+      color: rgba(201, 184, 130, 0.05);
+      letter-spacing: -0.05em;
+      pointer-events: none;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .contact-section .section-label { color: var(--gold); opacity: 0.7; }
+    .contact-section .section-title { color: var(--cream); }
+    .contact-section .section-title em { color: var(--gold); }
+    .contact-section .divider { background: var(--gold); opacity: 0.4; }
+
+    .contact-desc {
+      font-size: 1rem;
+      line-height: 1.9;
+      color: rgba(245, 240, 232, 0.7);
+      max-width: 420px;
+    }
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+      margin-top: 2rem;
+    }
+    .contact-item-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.65;
+      margin-bottom: 0.2rem;
+    }
+    .contact-item-value {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-style: italic;
+      color: var(--cream);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 0.08rem;
+      transition: color 0.3s ease, border-bottom-color 0.3s ease;
+    }
+    .contact-item-value:hover, .contact-item-value:focus-visible {
+      color: var(--gold);
+      border-bottom-color: rgba(201, 184, 130, 0.5);
+    }
+    .contact-social {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 1.2rem;
+    }
+    .contact-social a {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border-bottom: 1px solid rgba(201, 184, 130, 0.4);
+      padding-bottom: 0.2rem;
+      opacity: 0.9;
+      transition: opacity 0.3s ease, border-bottom-color 0.3s ease;
+    }
+    .contact-social a:hover, .contact-social a:focus-visible {
+      border-bottom-color: var(--gold);
+      opacity: 1;
+    }
+    .contact-quote {
+      font-family: var(--font-display);
+      font-size: clamp(1.3rem, 2.3vw, 1.9rem);
+      font-style: italic;
+      color: var(--gold-soft);
+      max-width: 22ch;
+      line-height: 1.6;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #1A0A0E;
+      padding: 2rem 3rem;
+      border-top: 1px solid rgba(201, 184, 130, 0.12);
+      color: rgba(201, 184, 130, 0.55);
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .footer-inner {
+      width: min(100%, var(--container));
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .footer-logo {
+      font-family: var(--font-display);
+      font-style: italic;
+      color: var(--gold);
+      font-size: 1.1rem;
+    }
+
+    /* ── REVEAL ANIMATION ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .site-header { padding: 1.4rem 2.4rem; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { display: none; }
+      .hero-left { padding: 7rem 2.4rem 4rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .about-image { display: none; }
+      .projects-header { padding: 0 2.4rem 3rem; }
+      .project-featured { grid-template-columns: 1fr; }
+      .project-featured-img { aspect-ratio: 16 / 9; }
+      .project-featured-content { padding: 3rem 2.4rem 4rem; }
+      .projects-grid { grid-template-columns: repeat(2, 1fr); }
+      .project-wide { grid-column: span 2; }
+      .editorial-strip { grid-template-columns: 1fr; gap: 3rem; padding-inline: 2.4rem; }
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      footer { padding-inline: 2.4rem; }
+    }
+
+    @media (max-width: 760px) {
+      .site-header { padding: 1.2rem 1.5rem; }
+      .nav-right { gap: 0.75rem; }
+      .nav-links {
+        position: absolute;
+        top: 72px; right: 1.5rem; left: 1.5rem;
+        background: rgba(74, 8, 24, 0.98);
+        border-radius: 26px;
+        padding: 1.2rem 1.5rem;
+        flex-direction: column;
+        gap: 0.7rem;
+        border: 1px solid rgba(201, 184, 130, 0.3);
+        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+        display: none;
+      }
+      .nav-open .nav-links { display: flex; }
+      .nav-toggle { display: inline-flex; }
+      .hero-left { padding-inline: 1.5rem; }
+      .projects-header { padding-inline: 1.5rem; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-wide { grid-column: span 1; aspect-ratio: 4 / 3; }
+      .project-card-overlay { opacity: 1; }
+      .editorial-strip { padding-inline: 1.5rem; }
+      .editorial-images { grid-template-columns: 1fr; }
+      .editorial-images img:nth-child(2) { margin-top: 0; }
+      .contact-section { padding-inline: 1.5rem; }
+      footer { padding-inline: 1.5rem; }
+      .footer-inner { flex-direction: column; align-items: flex-start; row-gap: 0.75rem; }
+    }
+
+    @media (max-width: 520px) {
+      .container { width: min(100% - 2rem, var(--container)); }
+      .stats-banner { display: grid; justify-items: flex-start; row-gap: 0.6rem; }
+    }
+  </style>
 </head>
 <body>
+  <a href="#main" class="skip-link">Skip to content</a>
 
-<!-- ─── NAV ─── -->
-<nav id="navbar">
-  <a href="#" class="nav-logo">Maroua Azoud</a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#projects">Work</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
-
-<!-- ─── HERO ─── -->
-<section class="hero" id="hero">
-  <div class="hero-left">
-    <p class="hero-eyebrow">AI Visual Artist &amp; Creative Designer — Doha, Qatar</p>
-    <h1 class="hero-title">
-      Maroua<br><em>Azoud</em>
-    </h1>
-    <p class="hero-subtitle">
-      Campaign-level brand content for luxury, lifestyle &amp; fitness brands across the Gulf and MENA region.
-    </p>
-    <div class="hero-tagline">
-      <span>Higher Conversions</span>
-      <span>More Views</span>
-      <span>Strong Impact</span>
-    </div>
-    <a href="#projects" class="hero-cta">View Portfolio</a>
-  </div>
-  <div class="hero-right">
-    <img src="images/hero-bg.jpg" alt="Maroua Azoud — AI Visual Artist" 
-         onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #8B1A2F 0%, #4A0818 100%)'">
-  </div>
-</section>
-
-<!-- ─── ABOUT ─── -->
-<section class="about" id="about">
-  <div class="about-image reveal">
-    <img src="images/maroua-portrait.jpg" alt="Maroua Azoud"
-         onerror="this.style.display='none'">
-  </div>
-  <div class="about-text reveal">
-    <p class="section-label">About Me</p>
-    <h2 class="section-title">The Vision<br>is <em>Mine</em></h2>
-    <div class="divider"></div>
-    <p>
-      I'm Maroua Azoud, an AI visual artist and creative designer based in Doha, Qatar. I create campaign-level brand content for luxury, lifestyle, and fitness brands across the Gulf and MENA region — from AI product shoots and perfume campaigns to brand identity visuals and video production.
-    </p>
-    <blockquote class="about-quote">
-      Every project starts with a direction.<br>The AI is the tool. The vision is mine.
-    </blockquote>
-    <p>My work bridges the gap between traditional luxury aesthetics and cutting-edge AI production, delivering visuals that compete with the world's most celebrated brands — at a fraction of conventional cost and time.</p>
-    <div class="services-grid">
-      <div class="service-item">Commercial Videos &amp; Ads</div>
-      <div class="service-item">Product Visualization</div>
-      <div class="service-item">Campaign Visual Direction</div>
-      <div class="service-item">AI Video Production</div>
-      <div class="service-item">Social Media Content</div>
-      <div class="service-item">AI Photoshoot</div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── PROJECTS ─── -->
-<section class="projects" id="projects">
-  <div class="projects-header reveal">
-    <p class="section-label">Selected Work</p>
-    <h2 class="section-title">Creating <em>Worlds</em><br>Around Brands</h2>
-    <div class="divider"></div>
-  </div>
-
-  <!-- ASSAF Featured -->
-  <div class="project-featured reveal">
-    <div class="project-featured-img">
-      <img src="images/assaf-hero.jpg" alt="ASSAF Pink Diva Campaign"
-           onerror="this.style.background='linear-gradient(135deg, #C9B882 0%, #8B1A2F 100%)'; this.style.display='block'; this.style.width='100%'; this.style.height='100%'">
-    </div>
-    <div class="project-featured-content">
-      <p class="project-client">Saudi Arabia · Fragrance</p>
-      <h3 class="project-name">Assaf<br><em>Arrogate Pink Diva</em></h3>
-      <p class="project-type">Campaign Visual Direction · AI Photoshoot · Editorial Series</p>
-      <p class="project-desc">
-        A Saudi fragrance brand with an established presence in the Gulf market. The direction was clear: create a visual world that feels like the perfume smells. Feminine, bold, dramatic. Pink not as a color — as an attitude.
-      </p>
-      <div class="project-treatments">
-        <div class="treatment"><span><strong>Pink Sky Effect</strong> — Soft gradients, glowing light, warm feminine atmosphere</span></div>
-        <div class="treatment"><span><strong>Teaser Campaign</strong> — Silhouette and shadow. The product was not fully shown</span></div>
-        <div class="treatment"><span><strong>Fantasy Luxury</strong> — Surreal, dreamlike, built for billboard scale</span></div>
+  <header class="site-header" id="top">
+    <div class="nav-inner">
+      <a href="#top" class="brand" data-i18n data-en="Maroua Azoud" data-ar="مروى أزود">
+        Maroua Azoud
+        <span data-i18n data-en="portfolio" data-ar="بورتفوليو">portfolio</span>
+      </a>
+      <div class="nav-right">
+        <button class="lang-toggle" type="button" id="lang-toggle" data-lang="en" aria-label="Switch language to Arabic">EN</button>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
+          <span></span>
+        </button>
+        <nav aria-label="Primary" id="site-nav">
+          <ul class="nav-links">
+            <li><a href="#about" data-i18n data-en="About Me" data-ar="نبذة عني">About Me</a></li>
+            <li><a href="#projects" data-i18n data-en="Projects" data-ar="الأعمال">Projects</a></li>
+            <li><a href="#editorial" data-i18n data-en="Editorial" data-ar="إديتوريال">Editorial</a></li>
+            <li><a href="#contact" class="nav-cta" data-i18n data-en="Contact" data-ar="تواصل">Contact</a></li>
+          </ul>
+        </nav>
       </div>
     </div>
-  </div>
+  </header>
 
-  <!-- Project Grid -->
-  <div class="projects-grid">
+  <main id="main">
 
-    <!-- Gulf Heritage -->
-    <div class="project-card reveal">
-      <img src="images/gulf-heritage-1.jpg" alt="Gulf Heritage Campaign"
-           onerror="this.style.background='linear-gradient(to bottom, #C9B882, #4A0818)'; this.style.width='100%'; this.style.height='100%'; this.style.display='block'">
-      <div class="project-card-overlay">
-        <p class="project-card-label">Self-Directed · Jewelry</p>
-        <h4 class="project-card-title">Gulf Heritage</h4>
-        <p class="project-card-desc">Gulf jewelry treated as haute couture. Gold as identity. Architecture as stage. The desert as home.</p>
+    <!-- ══ HERO ══ -->
+    <section class="hero" id="hero">
+      <div class="hero-inner">
+        <div class="hero-left">
+          <p class="hero-eyebrow" data-i18n data-en="AI Visual Artist &amp; Creative Designer · Doha, Qatar" data-ar="فنانة بصرية بالذكاء الاصطناعي ومصممة إبداعية · الدوحة، قطر">
+            AI Visual Artist &amp; Creative Designer · Doha, Qatar
+          </p>
+          <h1 class="hero-title" data-i18n data-en="Maroua<br>Azoud<em>.</em>" data-ar="مروى<br>أزود<em>.</em>">
+            Maroua<br />Azoud<em>.</em>
+          </h1>
+          <p class="hero-subtitle" data-i18n
+            data-en="Campaign-level brand content for luxury, lifestyle &amp; fitness brands across the Gulf and MENA region."
+            data-ar="محتوى بصري بمستوى الحملات الإعلانية لعلامات الفخامة ونمط الحياة واللياقة عبر الخليج ومنطقة الشرق الأوسط وشمال أفريقيا.">
+            Campaign-level brand content for luxury, lifestyle &amp; fitness brands across the Gulf and MENA region.
+          </p>
+          <div class="hero-tagline" aria-label="Key outcomes">
+            <span data-i18n data-en="Higher Conversions" data-ar="تحويلات أعلى">Higher Conversions</span>
+            <span data-i18n data-en="More Views" data-ar="مشاهدات أكثر">More Views</span>
+            <span data-i18n data-en="Strong Impact" data-ar="تأثير قوي">Strong Impact</span>
+          </div>
+          <a href="#projects" class="hero-cta" data-i18n data-en="View Portfolio" data-ar="استعراض الأعمال">View Portfolio</a>
+        </div>
+
+        <div class="hero-right" aria-hidden="true">
+          <div class="hero-image-wrapper">
+            <!-- Hero background: desert luxury campaign shot -->
+            <img src="pictures/202602221205.jpeg" alt="Campaign-level luxury visuals by Maroua Azoud" loading="lazy" width="1400" height="1600" />
+            <div class="hero-caption">
+              <span data-i18n data-en="AI Visual Production" data-ar="إنتاج بصري بالذكاء الاصطناعي">AI Visual Production</span>
+              <span data-i18n data-en="Gulf &amp; MENA" data-ar="الخليج والشرق الأوسط وشمال أفريقيا">Gulf &amp; MENA</span>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="project-always-visible">
-        <p class="project-card-label">Gulf Heritage</p>
+    </section>
+
+    <!-- ══ ABOUT ══ -->
+    <section id="about" class="section section-light">
+      <div class="container">
+        <div class="reveal">
+          <p class="section-label" data-i18n data-en="About Me" data-ar="نبذة عني">About Me</p>
+          <h2 class="section-title" data-i18n data-en="The vision is <em>mine</em>." data-ar="الرؤية <em>لي</em>.">The vision is <em>mine</em>.</h2>
+          <div class="divider"></div>
+          <p class="section-lead" data-i18n
+            data-en="I'm Maroua Azoud, an AI visual artist and creative designer based in Doha, Qatar. I create campaign-level brand content for luxury, lifestyle, and fitness brands across the Gulf and MENA region, from AI product shoots and perfume campaigns to brand identity visuals and video production."
+            data-ar="أنا مروى أزود، فنانة بصرية بالذكاء الاصطناعي ومصممة إبداعية مقيمة في الدوحة، قطر. أُنتج محتوى بصري بمستوى الحملات الإعلانية لعلامات الفخامة ونمط الحياة واللياقة عبر الخليج ومنطقة الشرق الأوسط وشمال أفريقيا، من جلسات تصوير المنتجات والعطور بالذكاء الاصطناعي إلى هوية العلامة البصرية وإنتاج الفيديو.">
+            I'm Maroua Azoud, an AI visual artist and creative designer based in Doha, Qatar. I create campaign-level brand content for luxury, lifestyle, and fitness brands across the Gulf and MENA region, from AI product shoots and perfume campaigns to brand identity visuals and video production.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-text reveal">
+            <p data-i18n
+              data-en="Every project starts with a direction. The AI is the tool. The vision is mine."
+              data-ar="كل مشروع يبدأ باتجاه واضح. الذكاء الاصطناعي هو الأداة، أما الرؤية فهي لي.">
+              Every project starts with a direction. The AI is the tool. The vision is mine.
+            </p>
+            <p data-i18n
+              data-en="My work bridges the gap between traditional luxury aesthetics and cutting-edge AI production, delivering visuals that compete with the world's most celebrated brands at a fraction of conventional cost and time."
+              data-ar="عملي يربط بين جمالية الفخامة الكلاسيكية وإمكانات الإنتاج بالذكاء الاصطناعي، ليقدّم صوراً تنافس أشهر العلامات العالمية بجزء من التكلفة والوقت التقليديين.">
+              My work bridges the gap between traditional luxury aesthetics and cutting-edge AI production, delivering visuals that compete with the world's most celebrated brands at a fraction of conventional cost and time.
+            </p>
+            <blockquote class="about-quote" data-i18n
+              data-en="Every project starts with a direction.<br>The AI is the tool. The vision is mine."
+              data-ar="كل مشروع يبدأ باتجاه واضح.<br>الذكاء الاصطناعي هو الأداة. الرؤية لي.">
+              Every project starts with a direction.<br />The AI is the tool. The vision is mine.
+            </blockquote>
+            <div class="services-grid" aria-label="Services">
+              <div class="service-item" data-i18n data-en="Commercial Videos &amp; Ads" data-ar="إعلانات وفيديوهات تجارية">Commercial Videos &amp; Ads</div>
+              <div class="service-item" data-i18n data-en="Product Visualization" data-ar="تصوّر بصري للمنتجات">Product Visualization</div>
+              <div class="service-item" data-i18n data-en="Campaign Visual Direction" data-ar="الإخراج البصري للحملات">Campaign Visual Direction</div>
+              <div class="service-item" data-i18n data-en="AI Video Production" data-ar="إنتاج فيديو بالذكاء الاصطناعي">AI Video Production</div>
+              <div class="service-item" data-i18n data-en="Social Media Content" data-ar="محتوى وسائل التواصل الاجتماعي">Social Media Content</div>
+              <div class="service-item" data-i18n data-en="AI Photoshoot" data-ar="جلسات تصوير بالذكاء الاصطناعي">AI Photoshoot</div>
+            </div>
+            <div class="stats-banner" aria-label="Key results">
+              <span data-i18n data-en="Higher Conversions" data-ar="تحويلات أعلى">Higher Conversions</span>
+              <span data-i18n data-en="More Views" data-ar="مشاهدات أكثر">More Views</span>
+              <span data-i18n data-en="Strong Impact" data-ar="تأثير قوي">Strong Impact</span>
+            </div>
+          </div>
+
+          <div class="about-image reveal">
+            <!-- Your professional portrait photo -->
+            <img src="pictures/Marouaa.jpg"
+                 alt="Portrait of AI visual artist and designer Maroua Azoud"
+                 loading="lazy" width="1000" height="1400" />
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <!-- Gulf Heritage Detail -->
-    <div class="project-card reveal">
-      <img src="images/gulf-heritage-2.jpg" alt="Gulf Heritage Detail"
-           onerror="this.style.background='linear-gradient(to bottom, #8B6914, #2A0A0A)'; this.style.width='100%'; this.style.height='100%'; this.style.display='block'">
-      <div class="project-card-overlay">
-        <p class="project-card-label">Jewelry Campaign</p>
-        <h4 class="project-card-title">Heritage meets<br>Modern Luxury</h4>
-        <p class="project-card-desc">Three visual territories: intimate detail, editorial portrait, and lifestyle campaign.</p>
+    <!-- ══ PROJECTS ══ -->
+    <section id="projects" class="projects">
+      <div class="projects-header container reveal">
+        <p class="section-label" data-i18n data-en="Selected Work" data-ar="أعمال مختارة">Selected Work</p>
+        <h2 class="section-title" data-i18n data-en="Creating <em>worlds</em> around brands." data-ar="أصنع <em>عوالم</em> حول العلامات التجارية.">Creating <em>worlds</em> around brands.</h2>
+        <div class="divider"></div>
+        <p class="section-lead" data-i18n
+          data-en="Four projects, each anchored in a clear direction. Gulf Heritage as a hero case study, followed by product campaigns and editorial work in a focused grid."
+          data-ar="أربعة مشاريع، لكل واحد اتجاه بصري واضح: Gulf Heritage كدراسة حالة رئيسية، تليها حملات المنتجات والأعمال التحريرية في شبكة مختصرة.">
+          Four projects, each anchored in a clear direction. Gulf Heritage as a hero case study, followed by product campaigns and editorial work in a focused grid.
+        </p>
       </div>
-    </div>
 
-    <!-- Noah Switch -->
-    <div class="project-card reveal">
-      <img src="images/noah-switch.jpg" alt="Noah Switch Merchandise"
-           onerror="this.style.background='linear-gradient(to bottom, #2A4A6B, #0A1A2A)'; this.style.width='100%'; this.style.height='100%'; this.style.display='block'">
-      <div class="project-card-overlay">
-        <p class="project-card-label">Brand Identity</p>
-        <h4 class="project-card-title">Noah Switch</h4>
-        <p class="project-card-desc">Merchandise direction — visual mockups exploring how a brand identity translates across physical touchpoints: cap, hoodie, notebook.</p>
+      <!-- Featured Project: Gulf Heritage -->
+      <article class="project-featured reveal" aria-label="Gulf Heritage jewelry editorial campaign">
+        <div class="project-featured-img">
+          <img src="pictures/202602221209.jpeg"
+               alt="Gulf Heritage — woman in desert with Porsche and gold jewelry"
+               loading="lazy" width="1400" height="1200" />
+        </div>
+        <div class="project-featured-content">
+          <p class="project-client" data-i18n data-en="Self-directed · Jewelry &amp; Lifestyle" data-ar="عمل ذاتي · مجوهرات ونمط حياة">Self-directed · Jewelry &amp; Lifestyle</p>
+          <h3 class="project-name" data-i18n data-en="Gulf<br><em>Heritage</em>" data-ar="Gulf<br><em>Heritage</em>">
+            Gulf<br /><em>Heritage</em>
+          </h3>
+          <p class="project-type" data-i18n data-en="Campaign Visual Direction · AI Photoshoot · Editorial Series" data-ar="إخراج بصري للحملة · جلسات تصوير بالذكاء الاصطناعي · سلسلة تحريرية">
+            Campaign Visual Direction · AI Photoshoot · Editorial Series
+          </p>
+          <p class="project-desc" data-i18n
+            data-en="Gulf jewelry treated like haute couture. The brief was to create a world where traditional gold craftsmanship meets the raw beauty of the desert — where architecture becomes a stage and the Porsche becomes a symbol of modern heritage."
+            data-ar="مجوهرات خليجية تُعامل كأزياء راقية. كان الهدف بناء عالم يجمع بين صياغة الذهب التقليدية وجمال الصحراء الخام — حيث يصبح المعمار مسرحاً والبورش رمزاً للتراث الحديث.">
+            Gulf jewelry treated like haute couture. The brief was to create a world where traditional gold craftsmanship meets the raw beauty of the desert — where architecture becomes a stage and the Porsche becomes a symbol of modern heritage.
+          </p>
+          <p class="project-desc" data-i18n
+            data-en="Gold as identity. Architecture as stage. The desert as home."
+            data-ar="الذهب هو الهوية. المعمار هو المسرح. والصحراء هي البيت.">
+            Gold as identity. Architecture as stage. The desert as home.
+          </p>
+          <div class="project-treatments">
+            <div class="treatment">
+              <span></span>
+              <p data-i18n
+                data-en="<strong>Desert Luxury</strong> — Golden hour, sand dunes, Porsche 911 as a cultural symbol."
+                data-ar="<strong>Desert Luxury</strong> — الساعة الذهبية، الكثبان الرملية، بورش 911 كرمز ثقافي.">
+                <strong>Desert Luxury</strong> — Golden hour, sand dunes, Porsche 911 as a cultural symbol.
+              </p>
+            </div>
+            <div class="treatment">
+              <span></span>
+              <p data-i18n
+                data-en="<strong>Architectural Staging</strong> — Ancient Arabic arches as frames for modern femininity."
+                data-ar="<strong>Architectural Staging</strong> — الأقواس العربية القديمة كإطارات للأنوثة الحديثة.">
+                <strong>Architectural Staging</strong> — Ancient Arabic arches as frames for modern femininity.
+              </p>
+            </div>
+            <div class="treatment">
+              <span></span>
+              <p data-i18n
+                data-en="<strong>Artisan Gold</strong> — Bangles, necklaces, earrings — each piece hero-lit and story-driven."
+                data-ar="<strong>Artisan Gold</strong> — أساور، قلائد، أقراط — كل قطعة مضاءة كبطلة لها حكايتها.">
+                <strong>Artisan Gold</strong> — Bangles, necklaces, earrings — each piece hero-lit and story-driven.
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Projects Grid -->
+      <div class="projects-grid container" aria-label="Additional project work">
+
+        <!-- Card 1: Jewelry close-up editorial -->
+        <article class="project-card reveal">
+          <img src="pictures/202602230504.jpeg"
+               alt="Close-up portrait with gold tassel earring — Gulf Heritage editorial"
+               loading="lazy" width="1000" height="1400" />
+          <div class="project-card-overlay">
+            <p class="project-card-label" data-i18n data-en="Self-directed · Editorial" data-ar="عمل ذاتي · تحريري">Self-directed · Editorial</p>
+            <h4 class="project-card-title" data-i18n data-en="Earring Study" data-ar="دراسة الأقراط">Earring Study</h4>
+            <p class="project-card-desc" data-i18n
+              data-en="Macro detail direction — jewelry as the hero, skin as the canvas."
+              data-ar="إخراج التفاصيل الدقيقة — المجوهرات هي البطلة، والبشرة هي اللوحة.">
+              Macro detail direction — jewelry as the hero, skin as the canvas.
+            </p>
+          </div>
+          <div class="project-always-visible">
+            <p class="project-card-label" data-i18n data-en="Gulf Heritage" data-ar="Gulf Heritage">Gulf Heritage</p>
+            <h4 class="project-card-title" data-i18n data-en="Detail Series" data-ar="سلسلة التفاصيل">Detail Series</h4>
+          </div>
+        </article>
+
+        <!-- Card 2: Falcon portrait -->
+        <article class="project-card reveal">
+          <img src="pictures/2026022212092.jpeg"
+               alt="Gulf Heritage — woman holding a falcon, gold jewelry, Arabic architecture"
+               loading="lazy" width="1000" height="1400" />
+          <div class="project-card-overlay">
+            <p class="project-card-label" data-i18n data-en="Self-directed · Heritage" data-ar="عمل ذاتي · تراث">Self-directed · Heritage</p>
+            <h4 class="project-card-title" data-i18n data-en="The Falconer" data-ar="الصقّارة">The Falconer</h4>
+            <p class="project-card-desc" data-i18n
+              data-en="Falcon, gold, and stone — the icons of Gulf identity in a single frame."
+              data-ar="الصقر، الذهب، والحجر — رموز الهوية الخليجية في إطار واحد.">
+              Falcon, gold, and stone — the icons of Gulf identity in a single frame.
+            </p>
+          </div>
+          <div class="project-always-visible">
+            <p class="project-card-label" data-i18n data-en="Gulf Heritage" data-ar="Gulf Heritage">Gulf Heritage</p>
+            <h4 class="project-card-title" data-i18n data-en="Heritage &amp; identity." data-ar="التراث والهوية.">Heritage &amp; identity.</h4>
+          </div>
+        </article>
+
+        <!-- Card 3 (wide): Product campaign — earrings on sand -->
+        <article class="project-card project-wide reveal">
+          <img src="pictures/202602230507.jpeg"
+               alt="Luxury gold filigree earrings on deep red sand — product campaign"
+               loading="lazy" width="1600" height="900" />
+          <div class="project-card-overlay">
+            <p class="project-card-label" data-i18n data-en="Product Campaign · Jewelry" data-ar="حملة منتج · مجوهرات">Product Campaign · Jewelry</p>
+            <h4 class="project-card-title" data-i18n data-en="Sand &amp; Gold" data-ar="الرمل والذهب">Sand &amp; Gold</h4>
+            <p class="project-card-desc" data-i18n
+              data-en="Product-first direction. The desert as a luxury stage. Filigree earrings hero-lit against crimson dunes."
+              data-ar="الإخراج يضع المنتج في المركز. الصحراء كمسرح فاخر. أقراط الفيليغري تحت إضاءة احترافية أمام الكثبان القرمزية.">
+              Product-first direction. The desert as a luxury stage. Filigree earrings hero-lit against crimson dunes.
+            </p>
+          </div>
+          <div class="project-always-visible">
+            <p class="project-card-label">Sand &amp; Gold</p>
+            <h4 class="project-card-title">Product campaign · crimson desert.</h4>
+          </div>
+        </article>
+
       </div>
-      <div class="project-always-visible">
-        <p class="project-card-label">Noah Switch</p>
+    </section>
+
+    <!-- ══ EDITORIAL ══ -->
+    <section id="editorial" class="editorial-strip section">
+      <div class="editorial-copy container reveal">
+        <p class="section-label" data-i18n data-en="Editorial" data-ar="إديتوريال">Editorial</p>
+        <h2 class="section-title" data-i18n data-en="Where <em>craft</em> meets campaign." data-ar="حيث <em>الحرفية</em> تلتقي بالحملة.">Where <em>craft</em> meets campaign.</h2>
+        <div class="divider"></div>
+        <p class="section-lead" data-i18n
+          data-en="Every editorial piece is built around a single truth — the product, the place, the person. Here, gold jewelry becomes an extension of identity, architecture becomes backdrop, and the desert becomes atmosphere."
+          data-ar="كل عمل تحريري يُبنى حول حقيقة واحدة — المنتج، المكان، الشخص. هنا، تصبح المجوهرات الذهبية امتداداً للهوية، والمعمار خلفية، والصحراء أجواء.">
+          Every editorial piece is built around a single truth — the product, the place, the person. Here, gold jewelry becomes an extension of identity, architecture becomes backdrop, and the desert becomes atmosphere.
+        </p>
+        <p class="editorial-quote" data-i18n
+          data-en="&ldquo;The product is never just a product. It is a world waiting to be built.&rdquo;"
+          data-ar="&ldquo;المنتج ليس مجرد منتج أبداً. إنه عالم في انتظار أن يُبنى.&rdquo;">
+          &ldquo;The product is never just a product. It is a world waiting to be built.&rdquo;
+        </p>
       </div>
-    </div>
 
-    <!-- OneHardset wide -->
-    <div class="project-card project-wide reveal">
-      <img src="images/onehardset.jpg" alt="OneHardset Product Campaign"
-           onerror="this.style.background='linear-gradient(to right, #1A1A1A, #3A3A3A)'; this.style.width='100%'; this.style.height='100%'; this.style.display='block'">
-      <div class="project-card-overlay">
-        <p class="project-card-label">Product Campaign · AI Visual Direction &amp; Video Production</p>
-        <h4 class="project-card-title">OneHardset</h4>
-        <p class="project-card-desc">Full AI product shoot across five colorways, two angles, and detail shots — no studio, no photographer, no post-production team. A single brief turned into a complete content pipeline.</p>
+      <div class="editorial-images reveal">
+        <img src="pictures/202602230502.jpeg"
+             alt="Gulf Heritage editorial — woman in archway with gold bangles and necklace"
+             loading="lazy" width="900" height="1200" />
+        <img src="pictures/202602221212.jpeg"
+             alt="Gulf Heritage editorial — woman with gold jewelry under warm desert light"
+             loading="lazy" width="900" height="1200" />
       </div>
-      <div class="project-always-visible">
-        <p class="project-card-label">OneHardset · Product Campaign</p>
+    </section>
+
+    <!-- ══ CONTACT ══ -->
+    <section id="contact" class="contact-section">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="reveal">
+            <p class="section-label" data-i18n data-en="Let's Work Together" data-ar="لنعمل معاً">Let's Work Together</p>
+            <h2 class="section-title" data-i18n data-en="Ready to build a <em>world</em>?" data-ar="هل أنت مستعد لبناء <em>عالم</em>؟">Ready to build a <em>world</em>?</h2>
+            <div class="divider"></div>
+            <p class="contact-desc" data-i18n
+              data-en="Whether you need a full campaign, a single hero image, or a brand identity refresh — I bring the direction. Let's talk about your next project."
+              data-ar="سواء احتجت حملة كاملة، أو صورة رئيسية واحدة، أو تحديثاً لهوية العلامة — أحمل الاتجاه الإبداعي. لنتحدث عن مشروعك القادم.">
+              Whether you need a full campaign, a single hero image, or a brand identity refresh — I bring the direction. Let's talk about your next project.
+            </p>
+            <div class="contact-details">
+              <div>
+                <p class="contact-item-label" data-i18n data-en="Email" data-ar="البريد الإلكتروني">Email</p>
+                <a href="mailto:marouaazoud@gmail.com" class="contact-item-value">marouaazoud@gmail.com</a>
+
+              </div>
+              <div>
+                <p class="contact-item-label" data-i18n data-en="Based in" data-ar="مقيمة في">Based in</p>
+                <span class="contact-item-value" data-i18n data-en="Doha, Qatar" data-ar="الدوحة، قطر">Doha, Qatar</span>
+              </div>
+              <div>
+                <p class="contact-item-label" data-i18n data-en="Follow" data-ar="تابعيني">Follow</p>
+                <div class="contact-social">
+                  <a href="https://instagram.com/maroua.azoud" target="_blank">@maroua.azoud</a>
+                  <a href="https://instagram.com/bymar.ai" target="_blank">Bymar.ai</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal">
+            <p class="contact-quote" data-i18n
+              data-en="&ldquo;Every frame tells a story. Every campaign builds a world.&rdquo;"
+              data-ar="&ldquo;كل إطار يحكي قصة. كل حملة تبني عالماً.&rdquo;">
+              &ldquo;Every frame tells a story. Every campaign builds a world.&rdquo;
+            </p>
+          </div>
+        </div>
       </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-logo">Maroua Azoud</span>
+      <span data-i18n data-en="© 2025 · AI Visual Artist · Doha, Qatar" data-ar="© 2025 · فنانة بصرية بالذكاء الاصطناعي · الدوحة، قطر">© 2025 · AI Visual Artist · Doha, Qatar</span>
+      <span data-i18n data-en="All rights reserved" data-ar="جميع الحقوق محفوظة">All rights reserved</span>
     </div>
+  </footer>
 
-  </div>
-</section>
+  <script>
+    /* ── Scroll header ── */
+    const header = document.querySelector('.site-header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
 
-<!-- ─── EDITORIAL STRIP ─── -->
-<section class="editorial-strip">
-  <div class="editorial-copy reveal">
-    <p class="section-label">Editorial</p>
-    <h2 class="section-title">She doesn't ask<br>for <em>attention</em></h2>
-    <div class="divider"></div>
-    <p class="editorial-quote">
-      "She already has it. Confident, feminine, unapologetic. The Pink Diva woman knows exactly what she wants — and how she looks leaving the room."
-    </p>
-  </div>
-  <div class="editorial-images reveal">
-    <img src="images/editorial-1.jpg" alt="Pink Diva Editorial"
-         onerror="this.style.background='linear-gradient(to bottom, #D4A0A0, #8B1A2F)'; this.style.display='block'">
-    <img src="images/editorial-2.jpg" alt="Pink Diva Editorial 2"
-         onerror="this.style.background='linear-gradient(to bottom, #C9B0B0, #6B0F22)'; this.style.display='block'">
-  </div>
-</section>
-
-<!-- ─── CONTACT ─── -->
-<section class="contact" id="contact">
-  <div class="reveal">
-    <p class="section-label">Get in Touch</p>
-    <h2 class="section-title">Let's Build<br>Something <em>Remarkable</em></h2>
-    <div class="divider"></div>
-    <p class="contact-desc">
-      Available for luxury brand campaigns, product visualization, social media content direction, and AI video production across the Gulf and MENA region.
-    </p>
-  </div>
-  <div class="contact-details reveal">
-    <div class="contact-item">
-      <span class="contact-item-label">Email</span>
-      <a href="mailto:marouaazoud@gmail.com" class="contact-item-value">marouaazoud@gmail.com</a>
-    </div>
-    <div class="contact-item">
-      <span class="contact-item-label">Phone</span>
-      <a href="tel:+97430186039" class="contact-item-value">+974 30 186 039</a>
-    </div>
-    <div class="contact-item">
-      <span class="contact-item-label">Location</span>
-      <span class="contact-item-value">Doha, Qatar</span>
-    </div>
-    <div class="contact-social">
-      <a href="https://instagram.com/maroua.azoud" target="_blank">@maroua.azoud</a>
-      <a href="https://instagram.com/bymar.ai" target="_blank">Bymar.ai</a>
-    </div>
-  </div>
-</section>
-
-<!-- ─── FOOTER ─── -->
-<footer>
-  <span class="logo">Maroua Azoud</span>
-  <p>© 2025 Bymar.ai — AI Visual Production</p>
-  <p>Doha, Qatar · Gulf &amp; MENA</p>
-</footer>
-
-<script>
-  // Nav scroll effect
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 60);
-  });
-
-  // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 80);
-        observer.unobserve(entry.target);
-      }
+    /* ── Mobile nav toggle ── */
+    const navToggle = document.querySelector('.nav-toggle');
+    const siteHeader = document.querySelector('.site-header');
+    navToggle.addEventListener('click', () => {
+      const open = siteHeader.classList.toggle('nav-open');
+      navToggle.setAttribute('aria-expanded', open);
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
 
-  reveals.forEach(el => observer.observe(el));
-</script>
+    /* ── Reveal on scroll ── */
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => observer.observe(el));
+
+    /* ── i18n toggle ── */
+    const langBtn = document.getElementById('lang-toggle');
+    let currentLang = 'en';
+
+    function applyLang(lang) {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const val = el.getAttribute('data-' + lang);
+        if (val !== null) el.innerHTML = val;
+      });
+      document.documentElement.lang = lang;
+      document.documentElement.dir  = lang === 'ar' ? 'rtl' : 'ltr';
+      langBtn.textContent  = lang === 'en' ? 'AR' : 'EN';
+      langBtn.dataset.lang = lang;
+      langBtn.setAttribute('aria-label', lang === 'en' ? 'Switch language to Arabic' : 'Switch language to English');
+    }
+
+    langBtn.addEventListener('click', () => {
+      currentLang = currentLang === 'en' ? 'ar' : 'en';
+      applyLang(currentLang);
+    });
+  </script>
 </body>
 </html>
