@@ -802,6 +802,16 @@
         box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
         display: none;
       }
+        /* Hide the always-visible label when overlay is shown */
+      .project-card-overlay { opacity: 1; }
+      .project-always-visible { display: none; }
+        /* Fix text sizing in cards on small screens */
+      .project-card-title { font-size: 1rem; }
+      .project-card-desc { font-size: 0.75rem; max-width: 100%; }
+      .project-card-overlay { padding: 1.2rem; }
+
+
+      
       .nav-open .nav-links { display: flex; }
       .nav-toggle { display: inline-flex; }
       .hero-left { padding-inline: 1.5rem; }
@@ -1191,12 +1201,14 @@
 
     function applyLang(lang) {
       document.querySelectorAll('[data-i18n]').forEach(el => {
-        const val = el.getAttribute('data-' + lang);
-        if (val !== null) el.innerHTML = val;
+        const val = el.getAttribute(`data-${lang}`);
+        if (val !== null && val.trim() !== '') {
+          el.innerHTML = val;
+        }
       });
       document.documentElement.lang = lang;
-      document.documentElement.dir  = lang === 'ar' ? 'rtl' : 'ltr';
-      langBtn.textContent  = lang === 'en' ? 'AR' : 'EN';
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      langBtn.textContent = lang === 'en' ? 'AR' : 'EN';
       langBtn.dataset.lang = lang;
       langBtn.setAttribute('aria-label', lang === 'en' ? 'Switch language to Arabic' : 'Switch language to English');
     }
