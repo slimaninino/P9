@@ -742,6 +742,180 @@
       line-height: 1.6;
     }
 
+    /* ── CASE STUDIES ── */
+    .case-studies {
+      background: #0D0507;
+      padding: var(--space-16) 0;
+      color: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+    .case-studies::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(201,184,130,0.3), transparent);
+    }
+    .case-studies .projects-header .section-label { color: var(--gold); opacity: 0.75; }
+    .case-studies .projects-header .section-title { color: var(--cream); }
+    .case-studies .projects-header .section-title em { color: var(--gold); }
+    .case-studies .projects-header .divider { background: var(--gold); opacity: 0.45; }
+
+    .cs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-top: 2px;
+    }
+
+    .cs-card {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 3 / 4;
+      cursor: pointer;
+      display: block;
+      text-decoration: none;
+    }
+    .cs-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: top;
+      transition: transform 0.9s ease;
+      filter: brightness(0.88);
+    }
+    .cs-card:hover img { transform: scale(1.05); filter: brightness(0.75); }
+
+    .cs-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top,
+        rgba(13, 5, 7, 0.97) 0%,
+        rgba(74, 8, 24, 0.55) 45%,
+        transparent 75%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 2.8rem 2.6rem;
+      transition: background 0.4s ease;
+    }
+    .cs-card:hover .cs-card-overlay {
+      background: linear-gradient(to top,
+        rgba(13, 5, 7, 0.98) 0%,
+        rgba(74, 8, 24, 0.7) 55%,
+        transparent 80%);
+    }
+
+    .cs-card-eyebrow {
+      font-size: 0.55rem;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.8;
+      margin-bottom: 0.6rem;
+    }
+    .cs-card-name {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4vw, 3.6rem);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.0;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.3rem;
+    }
+    .cs-card-subtitle {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--gold-soft);
+      opacity: 0.7;
+      letter-spacing: 0.05em;
+      margin-bottom: 1.2rem;
+    }
+    .cs-card-desc {
+      font-size: 0.78rem;
+      color: rgba(245, 240, 232, 0.6);
+      line-height: 1.65;
+      max-width: 36ch;
+      margin-bottom: 1.8rem;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.4s ease 0.05s, transform 0.4s ease 0.05s;
+    }
+    .cs-card:hover .cs-card-desc {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .cs-card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(201, 184, 130, 0.5);
+      padding: 0.65rem 1.5rem;
+      border-radius: 999px;
+      align-self: flex-start;
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.35s ease 0.1s, transform 0.35s ease 0.1s, background 0.25s ease, border-color 0.25s ease;
+    }
+    .cs-card:hover .cs-card-cta {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .cs-card-cta:hover {
+      background: rgba(201, 184, 130, 0.12);
+      border-color: var(--gold);
+    }
+    .cs-card-cta svg {
+      width: 12px; height: 12px;
+      transition: transform 0.25s ease;
+    }
+    .cs-card:hover .cs-card-cta svg { transform: translateX(3px); }
+
+    .cs-gold-line {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .cs-card:hover .cs-gold-line { opacity: 0.5; }
+
+    /* image mosaic strip below the cards */
+    .cs-mosaic {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 2px;
+      margin-top: 2px;
+    }
+    .cs-mosaic-img {
+      aspect-ratio: 2 / 3;
+      overflow: hidden;
+    }
+    .cs-mosaic-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: brightness(0.7) sepia(0.1);
+      transition: filter 0.5s ease, transform 0.7s ease;
+    }
+    .cs-mosaic-img:hover img { filter: brightness(0.9); transform: scale(1.05); }
+
+    @media (max-width: 760px) {
+      .cs-grid { grid-template-columns: 1fr; }
+      .cs-card { aspect-ratio: 4 / 5; }
+      .cs-card-desc { opacity: 1; transform: none; }
+      .cs-card-cta { opacity: 1; transform: none; }
+      .cs-mosaic { grid-template-columns: repeat(3, 1fr); }
+      .cs-mosaic-img:nth-child(n+4) { display: none; }
+    }
+
     /* ── FOOTER ── */
     footer {
       background: #1A0A0E;
@@ -863,6 +1037,7 @@
             <li><a href="#about" data-i18n data-en="About Me" data-ar="نبذة عني">About Me</a></li>
             <li><a href="#projects" data-i18n data-en="Projects" data-ar="الأعمال">Projects</a></li>
             <li><a href="#editorial" data-i18n data-en="Editorial" data-ar="إديتوريال">Editorial</a></li>
+            <li><a href="#case-studies" data-i18n data-en="Case Studies" data-ar="دراسات الحالة">Case Studies</a></li>
             <li><a href="#contact" class="nav-cta" data-i18n data-en="Contact" data-ar="تواصل">Contact</a></li>
           </ul>
         </nav>
@@ -1267,6 +1442,93 @@
           </div>
         </article>
 
+      </div>
+
+    </section>
+
+    <!-- ══ CASE STUDIES ══ -->
+    <section id="case-studies" class="case-studies">
+      <div class="projects-header container reveal">
+        <p class="section-label" data-i18n data-en="Case Studies" data-ar="دراسات الحالة">Case Studies</p>
+        <h2 class="section-title" data-i18n data-en="Full brand <em>worlds</em>, from nothing." data-ar="عوالم علامات تجارية <em>كاملة</em> من الصفر.">Full brand <em>worlds</em>, from nothing.</h2>
+        <div class="divider"></div>
+        <p class="section-lead" data-i18n
+          data-en="Two in-depth case studies documenting the complete creative direction behind AI-generated luxury brand worlds — concept, visual language, process, and result."
+          data-ar="دراستا حالة تفصيليتان توثّقان الاتجاه الإبداعي الكامل وراء بناء عوالم علامات تجارية فاخرة بالذكاء الاصطناعي — الفكرة، اللغة البصرية، العملية، والنتيجة.">
+          Two in-depth case studies documenting the complete creative direction behind AI-generated luxury brand worlds — concept, visual language, process, and result.
+        </p>
+      </div>
+
+      <!-- Cards grid -->
+      <div class="cs-grid">
+
+        <!-- LUVA card -->
+        <a class="cs-card reveal"
+           href="case-study.html?pdf=LUVA_Case_Study_bymar.pdf&name=LUVA&tag=Worn+in+Silence"
+           aria-label="Open LUVA case study">
+          <div class="cs-gold-line"></div>
+          <img src="pictures/LUVA_1.webp"
+               alt="LUVA — woman applies deep crimson lipstick in dark mirror, wearing gold knot earrings"
+               loading="lazy" width="900" height="1200" />
+          <div class="cs-card-overlay">
+            <p class="cs-card-eyebrow">AI Visual Brand Case Study · bymar.ai · 2025</p>
+            <h3 class="cs-card-name">LUVA</h3>
+            <p class="cs-card-subtitle">Worn in Silence</p>
+            <p class="cs-card-desc">
+              An entirely imagined luxury jewelry brand — product, model, atmosphere — built using only AI generation and creative direction. One earring. Nine scenes. Each a different emotional state.
+            </p>
+            <span class="cs-card-cta">
+              View Case Study
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M3 8h10M9 4l4 4-4 4"/>
+              </svg>
+            </span>
+          </div>
+        </a>
+
+        <!-- NOUR card -->
+        <a class="cs-card reveal"
+           href="case-study.html?pdf=NOUR_Fine_Jewelry_Case_Study.pdf&name=NOUR&tag=Fine+Jewelry"
+           aria-label="Open NOUR Fine Jewelry case study">
+          <div class="cs-gold-line"></div>
+          <img src="pictures/LUVA_2.webp"
+               alt="NOUR Fine Jewelry — candlelight, red wine, gold earrings in dark atmosphere"
+               loading="lazy" width="900" height="1200" />
+          <div class="cs-card-overlay">
+            <p class="cs-card-eyebrow">AI Visual Brand Case Study · bymar.ai · 2025</p>
+            <h3 class="cs-card-name">NOUR</h3>
+            <p class="cs-card-subtitle">Fine Jewelry</p>
+            <p class="cs-card-desc">
+              A complete fine jewelry brand identity built through AI visual production. Light, gold, and restraint as the foundation of a world that feels alive before it speaks.
+            </p>
+            <span class="cs-card-cta">
+              View Case Study
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M3 8h10M9 4l4 4-4 4"/>
+              </svg>
+            </span>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- Mosaic of LUVA images -->
+      <div class="cs-mosaic" aria-label="LUVA campaign imagery">
+        <div class="cs-mosaic-img">
+          <img src="pictures/LUVA_5.webp" alt="LUVA — gold earrings on dark red marble with whisky glass" loading="lazy" width="600" height="900" />
+        </div>
+        <div class="cs-mosaic-img">
+          <img src="pictures/LUVA_9.webp" alt="LUVA — woman with gold earring and red wine in candlelight" loading="lazy" width="600" height="900" />
+        </div>
+        <div class="cs-mosaic-img">
+          <img src="pictures/LUVA_1.webp" alt="LUVA — mirror scene, woman applying lipstick" loading="lazy" width="600" height="900" />
+        </div>
+        <div class="cs-mosaic-img">
+          <img src="pictures/LUVA_10.webp" alt="LUVA — woman with cherries and gold earrings in darkness" loading="lazy" width="600" height="900" />
+        </div>
+        <div class="cs-mosaic-img">
+          <img src="pictures/LUVA_2.webp" alt="LUVA — candlelit dinner with gold ring and earring" loading="lazy" width="600" height="900" />
+        </div>
       </div>
 
     </section>

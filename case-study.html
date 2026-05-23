@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case Study | Maroua Azoud · bymar.ai</title>
+  <meta name="description" content="AI Visual Brand Case Study by Maroua Azoud · bymar.ai" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Tenor+Sans&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --crimson: #6B0F22;
+      --crimson-deep: #4A0818;
+      --gold: #C9B882;
+      --gold-soft: #DDD0A8;
+      --cream: #F5F0E8;
+      --off-white: #FAF8F4;
+      --text-body: #3D2020;
+      --font-display: "Cormorant Garamond", serif;
+      --font-body: "Tenor Sans", sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: #0D0507;
+      color: var(--cream);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── TOP BAR ── */
+    .top-bar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2.5rem;
+      background: rgba(13, 5, 7, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(201, 184, 130, 0.12);
+    }
+
+    .top-bar-brand {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--gold);
+      letter-spacing: 0.06em;
+      text-decoration: none;
+    }
+
+    .top-bar-title {
+      font-size: 0.62rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      opacity: 0.75;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      border: 1px solid rgba(201, 184, 130, 0.4);
+      padding: 0.5rem 1.2rem;
+      border-radius: 999px;
+      transition: all 0.3s ease;
+    }
+    .back-btn:hover {
+      background: rgba(201, 184, 130, 0.1);
+      border-color: var(--gold);
+    }
+    .back-btn svg { width: 14px; height: 14px; }
+
+    /* ── HERO BANNER ── */
+    .cs-hero {
+      margin-top: 64px;
+      min-height: 38vh;
+      background: linear-gradient(135deg, var(--crimson-deep) 0%, #1A0308 60%, #0D0507 100%);
+      display: flex;
+      align-items: flex-end;
+      padding: 3rem 3rem 2.8rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .cs-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(201, 184, 130, 0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .cs-hero-inner { position: relative; z-index: 2; max-width: 700px; }
+    .cs-eyebrow {
+      font-size: 0.6rem;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      opacity: 0.85;
+    }
+    .cs-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 6vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.0;
+      color: var(--cream);
+      letter-spacing: 0.08em;
+    }
+    .cs-title em { font-style: italic; color: var(--gold); }
+    .cs-tagline {
+      margin-top: 1rem;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--gold-soft);
+      opacity: 0.75;
+      letter-spacing: 0.04em;
+    }
+    .cs-divider {
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.5;
+      margin: 1.4rem 0 0;
+    }
+
+    /* ── DOWNLOAD BAR ── */
+    .dl-bar {
+      background: rgba(201, 184, 130, 0.06);
+      border-top: 1px solid rgba(201, 184, 130, 0.12);
+      border-bottom: 1px solid rgba(201, 184, 130, 0.12);
+      padding: 0.85rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .dl-info {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      opacity: 0.65;
+    }
+    .dl-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--crimson-deep);
+      background: var(--gold);
+      padding: 0.65rem 1.6rem;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: opacity 0.3s ease;
+    }
+    .dl-btn:hover { opacity: 0.88; }
+    .dl-btn svg { width: 14px; height: 14px; }
+
+    /* ── PDF VIEWER ── */
+    .pdf-viewer-wrap {
+      flex: 1;
+      padding: 2rem 1.5rem 4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+
+    #pdf-canvas-container {
+      width: 100%;
+      max-width: 860px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .pdf-page-wrap {
+      width: 100%;
+      position: relative;
+      box-shadow: 0 8px 60px rgba(0,0,0,0.7);
+    }
+    .pdf-page-wrap canvas {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    /* ── LOADING ── */
+    .pdf-loading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 6rem 2rem;
+      color: var(--gold-soft);
+    }
+    .pdf-loading-ring {
+      width: 48px; height: 48px;
+      border: 2px solid rgba(201, 184, 130, 0.15);
+      border-top-color: var(--gold);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .pdf-loading p {
+      font-size: 0.65rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+
+    /* ── PAGE COUNTER ── */
+    .page-counter {
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      opacity: 0.5;
+      padding: 1.2rem 0 0;
+    }
+
+    /* ── FOOTER ── */
+    .cs-footer {
+      background: #060103;
+      border-top: 1px solid rgba(201, 184, 130, 0.08);
+      padding: 1.4rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.65rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(201, 184, 130, 0.35);
+    }
+    .cs-footer a { color: var(--gold); text-decoration: none; opacity: 0.7; }
+    .cs-footer a:hover { opacity: 1; }
+
+    @media (max-width: 700px) {
+      .top-bar { padding: 0 1.2rem; }
+      .top-bar-title { display: none; }
+      .cs-hero { padding: 2rem 1.5rem 2rem; }
+      .dl-bar { padding: 0.85rem 1.5rem; }
+      .pdf-viewer-wrap { padding: 1rem 0.4rem 3rem; }
+      .cs-footer { padding: 1.2rem 1.5rem; flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header class="top-bar">
+    <a href="index.html" class="top-bar-brand">bymar.ai</a>
+    <span class="top-bar-title" id="bar-title">Case Study</span>
+    <a href="index.html" class="back-btn">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M10 12L6 8l4-4"/>
+      </svg>
+      Back
+    </a>
+  </header>
+
+  <!-- HERO -->
+  <section class="cs-hero" id="cs-hero">
+    <div class="cs-hero-inner">
+      <p class="cs-eyebrow" id="cs-eyebrow">AI Visual Brand Case Study · bymar.ai</p>
+      <h1 class="cs-title" id="cs-title">Case<br><em>Study</em></h1>
+      <p class="cs-tagline" id="cs-tagline">Creative Direction &amp; AI Visual Production</p>
+      <div class="cs-divider"></div>
+    </div>
+  </section>
+
+  <!-- DOWNLOAD BAR -->
+  <div class="dl-bar">
+    <span class="dl-info" id="dl-info">PDF · Creative Direction &amp; AI Visual Production</span>
+    <a href="#" class="dl-btn" id="dl-btn" download>
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/>
+      </svg>
+      Download PDF
+    </a>
+  </div>
+
+  <!-- PDF VIEWER -->
+  <main class="pdf-viewer-wrap">
+    <div id="pdf-canvas-container">
+      <div class="pdf-loading" id="pdf-loading">
+        <div class="pdf-loading-ring"></div>
+        <p>Loading case study&hellip;</p>
+      </div>
+    </div>
+    <p class="page-counter" id="page-counter"></p>
+  </main>
+
+  <footer class="cs-footer">
+    <span>Maroua Azoud · AI Visual Artist · Doha, Qatar</span>
+    <a href="index.html">← Back to Portfolio</a>
+    <span>© 2026 bymar.ai · All rights reserved</span>
+  </footer>
+
+  <!-- PDF.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script>
+    // ── Parse URL params ──
+    const params = new URLSearchParams(window.location.search);
+    const pdfFile = params.get('pdf') || '';
+    const csName  = params.get('name') || 'Case Study';
+    const csTag   = params.get('tag') || 'Worn in Silence';
+
+    // ── Populate hero ──
+    const titleMap = {
+      'LUVA_Case_Study_bymar.pdf': { h: 'LUVA', em: 'Worn in Silence', eyebrow: 'AI Visual Brand Case Study · bymar.ai · 2025', tagline: 'Creative Direction &amp; AI Visual Production' },
+      'NOUR_Fine_Jewelry_Case_Study.pdf': { h: 'NOUR', em: 'Fine Jewelry', eyebrow: 'AI Visual Brand Case Study · bymar.ai · 2025', tagline: 'Creative Direction &amp; AI Visual Production' },
+    };
+    const meta = titleMap[pdfFile] || { h: csName, em: csTag, eyebrow: 'AI Visual Brand Case Study · bymar.ai', tagline: 'Creative Direction &amp; AI Visual Production' };
+
+    document.getElementById('cs-title').innerHTML = meta.h + '<br><em>' + meta.em + '</em>';
+    document.getElementById('cs-eyebrow').innerHTML = meta.eyebrow;
+    document.getElementById('cs-tagline').innerHTML = meta.tagline;
+    document.getElementById('bar-title').textContent = meta.h + ' Case Study';
+    document.title = meta.h + ' Case Study | Maroua Azoud · bymar.ai';
+    document.getElementById('dl-info').textContent = pdfFile.replace(/_/g,' ').replace('.pdf','') + ' · PDF';
+
+    // ── Download link ──
+    if (pdfFile) {
+      document.getElementById('dl-btn').href = pdfFile;
+      document.getElementById('dl-btn').setAttribute('download', pdfFile);
+    }
+
+    // ── Render PDF ──
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+    async function renderPDF(url) {
+      const container = document.getElementById('pdf-canvas-container');
+      const loading   = document.getElementById('pdf-loading');
+
+      try {
+        const pdf = await pdfjsLib.getDocument(url).promise;
+        loading.style.display = 'none';
+        document.getElementById('page-counter').textContent =
+          pdf.numPages + ' page' + (pdf.numPages > 1 ? 's' : '');
+
+        for (let i = 1; i <= pdf.numPages; i++) {
+          const page    = await pdf.getPage(i);
+          const vp      = page.getViewport({ scale: 2.0 });
+          const wrap    = document.createElement('div');
+          wrap.className = 'pdf-page-wrap';
+          const canvas  = document.createElement('canvas');
+          const ctx     = canvas.getContext('2d');
+          canvas.width  = vp.width;
+          canvas.height = vp.height;
+          wrap.appendChild(canvas);
+          container.appendChild(wrap);
+          await page.render({ canvasContext: ctx, viewport: vp }).promise;
+        }
+      } catch (err) {
+        loading.innerHTML = '<p style="color:rgba(201,184,130,0.5);font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;">Could not load PDF.<br>Please download it directly.</p>';
+        console.error(err);
+      }
+    }
+
+    if (pdfFile) {
+      renderPDF(pdfFile);
+    } else {
+      document.getElementById('pdf-loading').innerHTML =
+        '<p style="color:rgba(201,184,130,0.5);font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;">No PDF specified.</p>';
+    }
+  </script>
+</body>
+</html>
