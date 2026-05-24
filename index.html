@@ -615,7 +615,91 @@
     .assaf-grid .project-card { aspect-ratio: 3 / 4; }
     .assaf-grid .project-wide { aspect-ratio: 16 / 7; }
 
-    /* ── EDITORIAL ── */
+    /* ── EXPERIENCE / EDUCATION ── */
+    .exp-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 2rem;
+    }
+    .exp-item {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 2rem;
+      padding: 1.6rem 0;
+      border-bottom: 1px solid rgba(107, 15, 34, 0.1);
+      align-items: center;
+      transition: background 0.3s ease;
+    }
+    .exp-item:first-child { border-top: 1px solid rgba(107, 15, 34, 0.1); }
+    .exp-item:hover { background: rgba(201, 184, 130, 0.05); padding-inline: 1rem; margin-inline: -1rem; border-radius: var(--radius-sm); }
+    .exp-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+    .exp-year {
+      font-size: 0.65rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--crimson);
+    }
+    .exp-location {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: rgba(61, 32, 32, 0.55);
+      text-transform: uppercase;
+    }
+    .exp-company {
+      font-family: var(--font-display);
+      font-size: clamp(1.15rem, 2vw, 1.45rem);
+      font-weight: 400;
+      color: var(--crimson-deep);
+      margin-bottom: 0.2rem;
+    }
+    .exp-role {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(61, 32, 32, 0.6);
+    }
+
+    @media (max-width: 600px) {
+      .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    }
+
+    /* ── VIDEO SECTION ── */
+    .video-section {
+      background: var(--crimson-deep);
+      padding: var(--space-16) 0;
+      color: var(--cream);
+    }
+    .video-section .projects-header { padding: 0 3.5rem 3.5rem; }
+    .video-section .projects-header .section-label { color: var(--gold); opacity: 0.75; }
+    .video-section .projects-header .section-title { color: var(--cream); }
+    .video-section .projects-header .section-title em { color: var(--gold); }
+    .video-section .projects-header .divider { background: var(--gold); opacity: 0.55; }
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-soft);
+      margin: 0 3.5rem;
+    }
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
+    @media (max-width: 760px) {
+      .video-section .projects-header { padding-inline: 1.5rem; }
+      .video-wrapper { margin-inline: 1.5rem; }
+    }
+
+    /* ── EDITORIAL (kept for styles, section removed) ── */
     .editorial-strip {
       padding: var(--space-16) 0;
       background: var(--cream);
@@ -1034,9 +1118,9 @@
         </button>
         <nav aria-label="Primary" id="site-nav">
           <ul class="nav-links">
-            <li><a href="#about" data-i18n data-en="About Me" data-ar="نبذة عني">About Me</a></li>
+            <li><a href="#about" data-i18n data-en="About" data-ar="نبذة عني">About</a></li>
+            <li><a href="#experience" data-i18n data-en="Experience" data-ar="الخبرة">Experience</a></li>
             <li><a href="#projects" data-i18n data-en="Projects" data-ar="الأعمال">Projects</a></li>
-            <li><a href="#editorial" data-i18n data-en="Editorial" data-ar="إديتوريال">Editorial</a></li>
             <li><a href="#case-studies" data-i18n data-en="Case Studies" data-ar="دراسات الحالة">Case Studies</a></li>
             <li><a href="#contact" class="nav-cta" data-i18n data-en="Contact" data-ar="تواصل">Contact</a></li>
           </ul>
@@ -1091,23 +1175,23 @@
           <h2 class="section-title" data-i18n data-en="The vision is <em>mine</em>." data-ar="الرؤية <em>لي</em>.">The vision is <em>mine</em>.</h2>
           <div class="divider"></div>
           <p class="section-lead" data-i18n
-            data-en="I'm Maroua Azoud, an AI visual artist and creative designer based in Doha, Qatar. I create campaign-level brand content for luxury, lifestyle, and fitness brands across the Gulf and MENA region, from AI product shoots and perfume campaigns to brand identity visuals and video production."
-            data-ar="أنا مروى عزود، فنانة بصرية بالذكاء الاصطناعي ومصممة إبداعية مقيمة في الدوحة، قطر. أُنتج محتوى بصري بمستوى الحملات الإعلانية لعلامات الفخامة ونمط الحياة واللياقة عبر الخليج ومنطقة الشرق الأوسط وشمال أفريقيا، من جلسات تصوير المنتجات والعطور بالذكاء الاصطناعي إلى هوية العلامة البصرية وإنتاج الفيديو.">
-            I'm Maroua Azoud, an AI visual artist and creative designer based in Doha, Qatar. I create campaign-level brand content for luxury, lifestyle, and fitness brands across the Gulf and MENA region, from AI product shoots and perfume campaigns to brand identity visuals and video production.
+            data-en="I started in architecture — but what I always loved was the 2D work. The compositions, the mood, the way a single image can make someone feel something."
+            data-ar="بدأت مسيرتي في الهندسة المعمارية — لكن ما كنت أعشقه دائماً هو العمل ثنائي الأبعاد. التكوينات، والمزاج، والطريقة التي تجعلك بها صورة واحدة تشعر بشيء ما.">
+            I started in architecture — but what I always loved was the 2D work. The compositions, the mood, the way a single image can make someone feel something.
           </p>
         </div>
 
         <div class="about-grid">
           <div class="about-text reveal">
             <p data-i18n
-              data-en="Every project starts with a direction. The AI is the tool. The vision is mine."
-              data-ar="كل مشروع يبدأ باتجاه واضح. الذكاء الاصطناعي هو الأداة، أما الرؤية فهي لي.">
-              Every project starts with a direction. The AI is the tool. The vision is mine.
+              data-en="Over time that pull led me toward brand visual work, and eventually toward AI-driven campaign production — where I could finally combine creative direction with the speed and scale that modern brands actually need."
+              data-ar="مع الوقت، قادني ذلك الشغف نحو العمل البصري للعلامات التجارية، ثم نحو إنتاج الحملات بالذكاء الاصطناعي — حيث أستطيع أخيراً الجمع بين التوجيه الإبداعي والسرعة والنطاق الذي تحتاجه العلامات الحديثة فعلاً.">
+              Over time that pull led me toward brand visual work, and eventually toward AI-driven campaign production — where I could finally combine creative direction with the speed and scale that modern brands actually need.
             </p>
             <p data-i18n
-              data-en="My work bridges the gap between traditional luxury aesthetics and cutting-edge AI production, delivering visuals that compete with the world's most celebrated brands at a fraction of conventional cost and time."
-              data-ar="عملي يربط بين جمالية الفخامة الكلاسيكية وإمكانات الإنتاج بالذكاء الاصطناعي، ليقدّم صوراً تنافس أشهر العلامات العالمية بجزء من التكلفة والوقت التقليديين.">
-              My work bridges the gap between traditional luxury aesthetics and cutting-edge AI production, delivering visuals that compete with the world's most celebrated brands at a fraction of conventional cost and time.
+              data-en="Today I work with brands across the Gulf and MENA to build campaign visuals that drive real results."
+              data-ar="اليوم أعمل مع علامات تجارية عبر الخليج ومنطقة الشرق الأوسط وشمال أفريقيا لبناء مرئيات حملات تحقق نتائج حقيقية.">
+              Today I work with brands across the Gulf and MENA to build campaign visuals that drive real results.
             </p>
             <blockquote class="about-quote" data-i18n
               data-en="Every project starts with a direction.<br>The AI is the tool. The vision is mine."
@@ -1134,6 +1218,88 @@
             <img src="pictures/Marouaa.webp"
                  alt="Portrait of AI visual artist and designer Maroua Azoud"
                  loading="lazy" width="1000" height="1400" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ EXPERIENCE ══ -->
+    <section id="experience" class="section section-cream">
+      <div class="container">
+        <div class="reveal">
+          <p class="section-label" data-i18n data-en="Experience" data-ar="الخبرة المهنية">Experience</p>
+          <h2 class="section-title" data-i18n data-en="Where I've <em>worked</em>." data-ar="أين <em>عملت</em>.">Where I've <em>worked</em>.</h2>
+          <div class="divider"></div>
+        </div>
+        <div class="exp-list reveal">
+          <div class="exp-item">
+            <div class="exp-meta">
+              <span class="exp-year">2026</span>
+              <span class="exp-location" data-i18n data-en="Saudi Arabia · Remote" data-ar="المملكة العربية السعودية · عن بُعد">Saudi Arabia · Remote</span>
+            </div>
+            <div class="exp-content">
+              <h3 class="exp-company">Barq Studio</h3>
+              <p class="exp-role" data-i18n data-en="AI Artist &amp; Creative" data-ar="فنانة ذكاء اصطناعي ومديرة إبداعية">AI Artist &amp; Creative</p>
+            </div>
+          </div>
+          <div class="exp-item">
+            <div class="exp-meta">
+              <span class="exp-year">2025–2026</span>
+              <span class="exp-location" data-i18n data-en="Doha, Qatar" data-ar="الدوحة، قطر">Doha, Qatar</span>
+            </div>
+            <div class="exp-content">
+              <h3 class="exp-company">Clinica Moderna</h3>
+              <p class="exp-role" data-i18n data-en="Graphic &amp; Visual Designer" data-ar="مصممة جرافيك وبصريات">Graphic &amp; Visual Designer</p>
+            </div>
+          </div>
+          <div class="exp-item">
+            <div class="exp-meta">
+              <span class="exp-year">2021–2024</span>
+              <span class="exp-location" data-i18n data-en="France · Remote" data-ar="فرنسا · عن بُعد">France · Remote</span>
+            </div>
+            <div class="exp-content">
+              <h3 class="exp-company">ENFIN Libre</h3>
+              <p class="exp-role" data-i18n data-en="Logo &amp; Brand Designer" data-ar="مصممة شعارات وهوية بصرية">Logo &amp; Brand Designer</p>
+            </div>
+          </div>
+          <div class="exp-item">
+            <div class="exp-meta">
+              <span class="exp-year">2021–2026</span>
+              <span class="exp-location" data-i18n data-en="Remote" data-ar="عن بُعد">Remote</span>
+            </div>
+            <div class="exp-content">
+              <h3 class="exp-company" data-i18n data-en="Freelance" data-ar="مستقلة">Freelance</h3>
+              <p class="exp-role" data-i18n data-en="Brand &amp; Social Media Design" data-ar="تصميم الهوية البصرية ووسائل التواصل الاجتماعي">Brand &amp; Social Media Design</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── EDUCATION ── -->
+        <div class="reveal" style="margin-top: 4rem;">
+          <p class="section-label" data-i18n data-en="Education" data-ar="التعليم">Education</p>
+          <h2 class="section-title" data-i18n data-en="Where it all <em>began</em>." data-ar="من حيث <em>بدأ كل شيء</em>.">Where it all <em>began</em>.</h2>
+          <div class="divider"></div>
+        </div>
+        <div class="exp-list reveal">
+          <div class="exp-item">
+            <div class="exp-meta">
+              <span class="exp-year">2020–2023</span>
+              <span class="exp-location" data-i18n data-en="Budapest, Hungary" data-ar="بودابست، المجر">Budapest, Hungary</span>
+            </div>
+            <div class="exp-content">
+              <h3 class="exp-company" data-i18n data-en="Óbuda University" data-ar="جامعة أوبودا">Óbuda University</h3>
+              <p class="exp-role" data-i18n data-en="Master's in Architecture and Interior Design" data-ar="ماجستير في العمارة والتصميم الداخلي">Master's in Architecture and Interior Design</p>
+            </div>
+          </div>
+          <div class="exp-item">
+            <div class="exp-meta">
+              <span class="exp-year">2017–2020</span>
+              <span class="exp-location" data-i18n data-en="Oum El Bouaghi, Algeria" data-ar="أم البواقي، الجزائر">Oum El Bouaghi, Algeria</span>
+            </div>
+            <div class="exp-content">
+              <h3 class="exp-company" data-i18n data-en="Université de Oum El Bouaghi" data-ar="جامعة أم البواقي">Université de Oum El Bouaghi</h3>
+              <p class="exp-role" data-i18n data-en="Bachelor's in Architecture" data-ar="بكالوريوس في العمارة">Bachelor's in Architecture</p>
+            </div>
           </div>
         </div>
       </div>
@@ -1467,7 +1633,7 @@
            href="case-study.html?pdf=LUVA_Case_Study_bymar.pdf&name=LUVA&tag=Worn+in+Silence"
            aria-label="Open LUVA case study">
           <div class="cs-gold-line"></div>
-          <img src="pictures/LUVA_5.webp"
+          <img src="pictures/LUVA_1.webp"
                alt="LUVA — woman applies deep crimson lipstick in dark mirror, wearing gold knot earrings"
                loading="lazy" width="900" height="1200" />
           <div class="cs-card-overlay">
@@ -1491,7 +1657,7 @@
            href="case-study.html?pdf=NOUR_Fine_Jewelry_Case_Study.pdf&name=NOUR&tag=Fine+Jewelry"
            aria-label="Open NOUR Fine Jewelry case study">
           <div class="cs-gold-line"></div>
-          <img src="pictures/202602230502.webp"
+          <img src="pictures/LUVA_2.webp"
                alt="NOUR Fine Jewelry — candlelight, red wine, gold earrings in dark atmosphere"
                loading="lazy" width="900" height="1200" />
           <div class="cs-card-overlay">
@@ -1533,31 +1699,24 @@
 
     </section>
 
-    <!-- ══ EDITORIAL ══ -->
-    <section id="editorial" class="editorial-strip section">
-      <div class="editorial-copy container reveal">
-        <p class="section-label" data-i18n data-en="Editorial" data-ar="إديتوريال">Editorial</p>
+    <!-- ══ VIDEO ══ -->
+    <section id="video" class="video-section">
+      <div class="projects-header container reveal">
+        <p class="section-label" data-i18n data-en="In Motion" data-ar="في الحركة">In Motion</p>
         <h2 class="section-title" data-i18n data-en="Where <em>craft</em> meets campaign." data-ar="حيث <em>الحرفية</em> تلتقي بالحملة.">Where <em>craft</em> meets campaign.</h2>
         <div class="divider"></div>
         <p class="section-lead" data-i18n
-          data-en="Every editorial piece is built around a single truth — the product, the place, the person. Here, gold jewelry becomes an extension of identity, architecture becomes backdrop, and the desert becomes atmosphere."
-          data-ar="كل عمل تحريري يُبنى حول حقيقة واحدة — المنتج، المكان، الشخص. هنا، تصبح المجوهرات الذهبية امتداداً للهوية، والمعمار خلفية، والصحراء أجواء.">
-          Every editorial piece is built around a single truth — the product, the place, the person. Here, gold jewelry becomes an extension of identity, architecture becomes backdrop, and the desert becomes atmosphere.
-        </p>
-        <p class="editorial-quote" data-i18n
-          data-en="&ldquo;The product is never just a product. It is a world waiting to be built.&rdquo;"
-          data-ar="&ldquo;المنتج ليس مجرد منتج أبداً. إنه عالم في انتظار أن يُبنى.&rdquo;">
-          &ldquo;The product is never just a product. It is a world waiting to be built.&rdquo;
+          data-en="Every frame is built around a single truth — the product, the place, the person. Gold jewelry becomes an extension of identity, architecture becomes backdrop, and the desert becomes atmosphere."
+          data-ar="كل إطار يُبنى حول حقيقة واحدة — المنتج، المكان، الشخص. تصبح المجوهرات الذهبية امتداداً للهوية، والمعمار خلفية، والصحراء أجواء.">
+          Every frame is built around a single truth — the product, the place, the person. Gold jewelry becomes an extension of identity, architecture becomes backdrop, and the desert becomes atmosphere.
         </p>
       </div>
-
-      <div class="editorial-images reveal">
-        <img src="pictures/202602230502.webp"
-             alt="Gulf Heritage editorial — woman in archway with gold bangles and necklace"
-             loading="lazy" width="900" height="1200" />
-        <img src="pictures/202602221212.webp"
-             alt="Gulf Heritage editorial — woman with gold jewelry under warm desert light"
-             loading="lazy" width="900" height="1200" />
+      <div class="video-wrapper reveal">
+        <iframe
+          src="https://player.vimeo.com/video/1195133158?badge=0&autopause=0&player_id=0&app_id=58479"
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+          title="Maroua Azoud — Campaign Reel">
+        </iframe>
       </div>
     </section>
 
